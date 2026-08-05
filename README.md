@@ -16,6 +16,35 @@ that has never been exercised is not a recovery tool.
 
 ## Download
 
+The archives are the recommended way to get `sg-dr`: they are what you verify,
+and what you keep somewhere you will still have during an outage. A package
+manager is the better way to *stay current* — a recovery tool three versions
+old is its own kind of risk — so both are supported.
+
+### Homebrew, macOS and Linux
+
+```bash
+brew tap stackguardian/sg-dr https://github.com/StackGuardian/sg-dr
+brew trust --formula stackguardian/sg-dr/sg-dr
+brew install stackguardian/sg-dr/sg-dr
+```
+
+Homebrew 6.0 requires explicit trust for taps outside its own, and refuses to
+load an untrusted one rather than prompting — hence the middle command. Trust
+is granted to this one formula rather than the whole tap, which is Homebrew's
+own recommendation.
+
+Later, `brew upgrade sg-dr` moves you to the current release.
+
+### Scoop, Windows
+
+```powershell
+scoop bucket add sg-dr https://github.com/StackGuardian/sg-dr
+scoop install sg-dr/sg-dr
+```
+
+### Archives, every platform
+
 Archives are named for the version they hold, so a file kept for years still
 says what it is. Pick your platform from the
 [latest release](https://github.com/StackGuardian/sg-dr/releases/latest), or:
@@ -36,6 +65,10 @@ Builds are published for Linux, macOS and Windows, on both amd64 and arm64.
 They are static, so the machine you recover on needs nothing else installed.
 
 ## Verify it before you store it
+
+Homebrew and Scoop pin the same checksums, so they cover integrity. Only this
+path exercises the signature, which is what establishes where the binary came
+from:
 
 ```bash
 sha256sum --ignore-missing -c checksums.txt
