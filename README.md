@@ -23,18 +23,23 @@ old is its own kind of risk — so both are supported.
 
 ### Homebrew, macOS and Linux
 
+The formula lives in StackGuardian's shared tap, alongside its other
+command-line tools:
+
 ```bash
-brew tap stackguardian/sg-dr https://github.com/StackGuardian/sg-dr
-brew trust --formula stackguardian/sg-dr/sg-dr
-brew install stackguardian/sg-dr/sg-dr
+brew trust --tap stackguardian/tap
+brew install stackguardian/tap/sg-dr
 ```
 
 Homebrew 6.0 requires explicit trust for taps outside its own, and refuses to
-load an untrusted one rather than prompting — hence the middle command. Trust
-is granted to this one formula rather than the whole tap, which is Homebrew's
-own recommendation.
+load an untrusted one rather than prompting — hence the first command. Trusting
+the tap covers every formula in it, now and later; if `sg-dr` is the only one
+you want, `brew trust --formula stackguardian/tap/sg-dr` grants strictly less,
+which is Homebrew's own recommendation.
 
-Later, `brew upgrade sg-dr` moves you to the current release.
+Later, `brew upgrade sg-dr` moves you to the current release. If you installed
+from the tap this repository used to serve, `brew untap stackguardian/sg-dr`
+removes it; it no longer carries the formula.
 
 ### Scoop, Windows
 
