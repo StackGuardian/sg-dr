@@ -1,11 +1,11 @@
 # sg-dr
 
-Recover StackGuardian-managed infrastructure when StackGuardian is unavailable.
+Recover StackGuardian-managed infrastructure. Only releases are maintained in this repo.
 
 `sg-dr` rebuilds a workflow's working environment from the artifacts your
 private runner wrote to **your own object storage**. It never contacts the
-StackGuardian API, because the case it exists for is the one where that API is
-down.
+StackGuardian API. It can also be used to operate your infrastructure in
+case StackGuardian's API is not available.
 
 **Download it and check it works before you need it.** A disaster recovery tool
 that has never been exercised is not a recovery tool.
